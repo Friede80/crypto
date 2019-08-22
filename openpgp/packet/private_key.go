@@ -165,7 +165,16 @@ func (pk *PrivateKey) Serialize(w io.Writer) (err error) {
 	if err != nil {
 		return
 	}
-	buf.WriteByte(0 /* no encryption */)
+
+	if pk.Stub {
+		// GNU extension to the S2K algorithm for subkey only keyrings.
+		b := []byte{255, 0, 101, 0}
+		b = append(b, []byte("GNU")...)
+		b = append(b, 1)
+		buf.Write(b)
+	} else {
+		buf.WriteByte(0 /* no encryption */)
+	}
 
 	privateKeyBuf := bytes.NewBuffer(nil)
 
@@ -185,6 +194,10 @@ func (pk *PrivateKey) Serialize(w io.Writer) (err error) {
 		return
 	}
 
+	if pk.Stub {
+		// Do not write any private key data for a stub key.
+		privateKeyBuf = bytes.NewBuffer(nil)
+	}
 	ptype := packetTypePrivateKey
 	contents := buf.Bytes()
 	privateKeyBytes := privateKeyBuf.Bytes()
@@ -199,6 +212,12 @@ func (pk *PrivateKey) Serialize(w io.Writer) (err error) {
 	if err != nil {
 		return
 	}
+
+	// Private key contents or checksum bytes are not written for stub keys.
+	if pk.Stub {
+		return
+	}
+
 	_, err = w.Write(privateKeyBytes)
 	if err != nil {
 		return
