@@ -8,8 +8,9 @@
 // ssh-agent process using the sample server.
 //
 // References:
-//  [PROTOCOL.agent]: https://tools.ietf.org/html/draft-miller-ssh-agent-00
-package agent // import "golang.org/x/crypto/ssh/agent"
+//
+//	[PROTOCOL.agent]: https://tools.ietf.org/html/draft-miller-ssh-agent-00
+package agent // import "github.com/syadav2015/crypto/ssh/agent"
 
 import (
 	"bytes"
@@ -26,8 +27,8 @@ import (
 	"sync"
 
 	"crypto"
-	"golang.org/x/crypto/ed25519"
-	"golang.org/x/crypto/ssh"
+	"github.com/syadav2015/crypto/ed25519"
+	"github.com/syadav2015/crypto/ssh"
 )
 
 // SignatureFlags represent additional flags that can be passed to the signature

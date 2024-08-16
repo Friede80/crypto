@@ -9,7 +9,7 @@ import (
 	"encoding/binary"
 	"errors"
 
-	"golang.org/x/crypto/internal/chacha20"
+	"github.com/syadav2015/crypto/internal/chacha20"
 )
 
 type xchacha20poly1305 struct {

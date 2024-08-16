@@ -4,7 +4,7 @@
 
 // Package s2k implements the various OpenPGP string-to-key transforms as
 // specified in RFC 4800 section 3.7.1.
-package s2k // import "golang.org/x/crypto/openpgp/s2k"
+package s2k // import "github.com/syadav2015/crypto/openpgp/s2k"
 
 import (
 	"crypto"
@@ -12,7 +12,7 @@ import (
 	"io"
 	"strconv"
 
-	"golang.org/x/crypto/openpgp/errors"
+	"github.com/syadav2015/crypto/openpgp/errors"
 )
 
 // Config collects configuration parameters for s2k key-stretching
@@ -153,10 +153,11 @@ func Iterated(out []byte, h hash.Hash, in []byte, salt []byte, count int) {
 
 // Parse reads a binary specification for a string-to-key transformation from r.
 // It returns either:
-//   nil, false, err — on error.
-//   nil, true, nil  — if the S2K is a special GNU extension that indicates that
-//                     the private key is missing.
-//   f, false, nil   — f is a function that performs the S2K transformation.
+//
+//	nil, false, err — on error.
+//	nil, true, nil  — if the S2K is a special GNU extension that indicates that
+//	                  the private key is missing.
+//	f, false, nil   — f is a function that performs the S2K transformation.
 func Parse(r io.Reader) (f func(out, in []byte), keyIsMissing bool, err error) {
 	var buf [9]byte
 

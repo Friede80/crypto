@@ -24,7 +24,7 @@ import (
 	"math/big"
 	"strings"
 
-	"golang.org/x/crypto/ed25519"
+	"github.com/syadav2015/crypto/ed25519"
 )
 
 // These constants represent the algorithm names for key types supported by this

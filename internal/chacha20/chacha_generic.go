@@ -10,7 +10,7 @@ import (
 	"crypto/cipher"
 	"encoding/binary"
 
-	"golang.org/x/crypto/internal/subtle"
+	"github.com/syadav2015/crypto/internal/subtle"
 )
 
 // assert that *Cipher implements cipher.Stream

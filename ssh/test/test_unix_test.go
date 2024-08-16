@@ -2,6 +2,7 @@
 // Use of this source code is governed by a BSD-style
 // license that can be found in the LICENSE file.
 
+//go:build aix || darwin || dragonfly || freebsd || linux || netbsd || openbsd || plan9
 // +build aix darwin dragonfly freebsd linux netbsd openbsd plan9
 
 package test
@@ -23,8 +24,8 @@ import (
 	"testing"
 	"text/template"
 
-	"golang.org/x/crypto/ssh"
-	"golang.org/x/crypto/ssh/testdata"
+	"github.com/syadav2015/crypto/ssh"
+	"github.com/syadav2015/crypto/ssh/testdata"
 )
 
 const (

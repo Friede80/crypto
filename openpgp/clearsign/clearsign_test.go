@@ -9,8 +9,8 @@ import (
 	"fmt"
 	"testing"
 
-	"golang.org/x/crypto/openpgp"
-	"golang.org/x/crypto/openpgp/packet"
+	"github.com/syadav2015/crypto/openpgp"
+	"github.com/syadav2015/crypto/openpgp/packet"
 )
 
 func testParse(t *testing.T, input []byte, expected, expectedPlaintext string) {
